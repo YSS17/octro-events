@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :issues, only: [] do
-    resources :events, only: [:index], defaults: {formats: :json}
-  end
-    resources :events, only: [:create], defaults: {formats: :json}
+  post "/events", to: "events#save_event"
+  get "/issues/:issue_number/events", to: "events#get_events_by_issue"
+  get "/issues/:id", to: "events#find"
 end
